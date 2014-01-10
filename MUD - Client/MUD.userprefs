@@ -1,0 +1,17 @@
+﻿<Properties>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Player.cs">
+    <Files>
+      <File FileName="Assets\Chat.cs" Line="266" Column="20" />
+      <File FileName="Assets\Connect.cs" Line="64" Column="35" />
+      <File FileName="Assets\Player.cs" Line="167" Column="28" />
+      <File FileName="Assets\Map.cs" Line="24" Column="34" />
+      <File FileName="Assets\Stuff.cs" Line="11" Column="9" />
+      <File FileName="Assets\ChatEntry.cs" Line="3" Column="1" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>
