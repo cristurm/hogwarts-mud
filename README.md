@@ -1,20 +1,15 @@
-hogwarts-mud
+Hogwarts MUD
 ============
 
-Harry Potter themed MUD (Multi-User Dungeon) developed during my postgraduate course.
+A small browser-based chat room inspired by the original Unity MUD. A host creates a room and shares its six-character code; friends join with the code and a name.
 
-The game itself is in portuguese, I will translate it to English in the near future, so other students can understand and learn from it too.
+## Run locally
 
-I've included in this repository 2 Windows Builds (one for each project), which are zipped inside their respective folders. Just unzip and play them on your machine to test it.
+Requires Node.js 20 or newer.
 
-Tips to make it easier to test this MUD:
-----------------------------------------
+```sh
+npm install
+npm start
+```
 
-If you wanna download the project to study it's code, it'll make it easier for you to run the Client on a build (web player or pc/mac build) and run the Server on Unity Editor, since the Client's only functions are to connect to the server and send messages, there is nothing much interesting in there to debug.
-
-Disclaimer:
------------
-
-The characters and names used on this project do not belong to me, they come from the Harry Potter books and belong to their writer, [J. K. Rowling](http://www.jkrowling.com/).
-
-This project is Harry Potter themed just for fun, with no comercial intentions.
+Open [http://localhost:3000](http://localhost:3000) in your browser. For friends to join from other devices, deploy this app to a server reachable by everyone and have them open the same URL. Room codes and chat are held in memory and disappear when the room empties or the server restarts.

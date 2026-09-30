@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#172c27">
+    <title>Hogwarts MUD | Common Room</title>
+    <link rel="stylesheet" href="/styles.css">
+    <script type="module" src="/app.js"></script>
+  </head>
+  <body>
+    <main class="page-shell">
+      <header class="masthead">
+        <a class="wordmark" href="/" aria-label="Hogwarts MUD home">
+          <span class="wordmark-mark" aria-hidden="true">H</span>
+          <span>Hogwarts <em>MUD</em></span>
+        </a>
+        <span class="edition">THE COMMON ROOM</span>
+      </header>
+
+      <section class="lobby" id="lobby" aria-labelledby="lobby-title">
+        <div class="lobby-copy">
+          <p class="eyebrow">A place to gather</p>
+          <h1 id="lobby-title">The fire<br>is <span>lit.</span></h1>
+          <p class="intro">Gather your friends around the common room hearth.</p>
+          <div class="rule-note"><span aria-hidden="true">✳</span> No passwords. Just your people.</div>
+        </div>
+
+        <div class="entry-panel">
+          <div class="entry-tabs" role="tablist" aria-label="Room options">
+            <button class="entry-tab is-active" id="create-tab" type="button" role="tab" aria-selected="true" aria-controls="create-panel">Create a room</button>
+            <button class="entry-tab" id="join-tab" type="button" role="tab" aria-selected="false" aria-controls="join-panel">Join a room</button>
+          </div>
+
+          <form class="entry-form" id="create-panel" role="tabpanel" aria-labelledby="create-tab">
+            <label for="host-name">Your name</label>
+            <input id="host-name" name="name" maxlength="24" placeholder="e.g. Hermione" autocomplete="nickname" required>
+            <button class="primary-button" type="submit">Open a common room <span aria-hidden="true">→</span></button>
+          </form>
+
+          <form class="entry-form" id="join-panel" role="tabpanel" aria-labelledby="join-tab" hidden>
+            <label for="guest-name">Your name</label>
+            <input id="guest-name" name="name" maxlength="24" placeholder="e.g. Luna" autocomplete="nickname" required>
+            <label for="room-code">Room code</label>
+            <input class="code-input" id="room-code" name="code" maxlength="6" placeholder="ABC123" autocomplete="off" autocapitalize="characters" required>
+            <button class="primary-button" type="submit">Join the room <span aria-hidden="true">→</span></button>
+          </form>
+          <p class="form-error" id="form-error" role="alert" aria-live="polite"></p>
+        </div>
+      </section>
+
+      <section class="chat-room is-hidden" id="chat-room" aria-label="Common room chat" hidden>
+        <header class="room-header">
+          <div>
+            <p class="eyebrow" id="room-role">YOUR COMMON ROOM</p>
+            <h1>By the hearth</h1>
+          </div>
+          <div class="room-tools">
+            <div class="room-code-wrap">
+              <span class="code-caption">ROOM CODE</span>
+              <strong id="display-code"></strong>
+            </div>
+            <button class="icon-button" id="copy-code" type="button" aria-label="Copy room code" title="Copy room code">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="8" y="8" width="12" height="12" rx="1.5"></rect><path d="M16 8V5.5A1.5 1.5 0 0 0 14.5 4h-9A1.5 1.5 0 0 0 4 5.5v9A1.5 1.5 0 0 0 5.5 16H8"></path></svg>
+            </button>
+            <button class="icon-button leave-button" id="leave-room" type="button" aria-label="Leave room" title="Leave room">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 17l5-5-5-5M15 12H3"></path><path d="M12 3h6.5A1.5 1.5 0 0 1 20 4.5v15a1.5 1.5 0 0 1-1.5 1.5H12"></path></svg>
+            </button>
+          </div>
+        </header>
+
+        <div class="room-layout">
+          <section class="conversation" aria-label="Messages">
+            <div class="message-list" id="message-list" role="log" aria-live="polite" aria-relevant="additions">
+              <p class="empty-state" id="empty-state">The room is quiet. Say hello.</p>
+            </div>
+            <form class="message-form" id="message-form">
+              <label class="visually-hidden" for="message-input">Write a message</label>
+              <input id="message-input" name="message" maxlength="500" placeholder="Send a message..." autocomplete="off" required>
+              <button class="send-button" type="submit" aria-label="Send message" title="Send message">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m22 2-7 20-4-9-9-4 20-7ZM22 2 11 13"></path></svg>
+              </button>
+            </form>
+          </section>
+
+          <aside class="people-panel" aria-labelledby="people-title">
+            <div class="people-heading"><h2 id="people-title">By the fire</h2><span id="people-count">0</span></div>
+            <ul id="people-list"></ul>
+          </aside>
+        </div>
+      </section>
+
+      <footer class="page-footer"><span>HOGWARTS MUD</span><span>THE ROOM IS YOURS</span></footer>
+    </main>
+  </body>
+</html>
