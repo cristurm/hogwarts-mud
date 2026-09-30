@@ -23,10 +23,8 @@ function showError(message) {
 
 function setEntryMode(mode) {
   const createMode = mode === 'create';
-  createTab.classList.toggle('is-active', createMode);
-  joinTab.classList.toggle('is-active', !createMode);
-  createTab.setAttribute('aria-selected', String(createMode));
-  joinTab.setAttribute('aria-selected', String(!createMode));
+  createTab.checked = createMode;
+  joinTab.checked = !createMode;
   createForm.hidden = !createMode;
   joinForm.hidden = createMode;
   showError('');
@@ -35,10 +33,9 @@ function setEntryMode(mode) {
 function showChat(code, isHost) {
   activeCode = code;
   roomCodeDisplay.textContent = code;
-  roomRole.textContent = isHost ? 'YOUR COMMON ROOM' : 'VISITING THE COMMON ROOM';
+  roomRole.textContent = isHost ? 'Your common room' : 'Visiting this room';
   lobby.hidden = true;
   chatRoom.hidden = false;
-  chatRoom.classList.remove('is-hidden');
   messageInput.focus();
 }
 
@@ -144,8 +141,8 @@ function connectToRoom(code, name, isHost) {
   });
 }
 
-createTab.addEventListener('click', () => setEntryMode('create'));
-joinTab.addEventListener('click', () => setEntryMode('join'));
+createTab.addEventListener('change', () => setEntryMode('create'));
+joinTab.addEventListener('change', () => setEntryMode('join'));
 
 createForm.addEventListener('submit', async (event) => {
   event.preventDefault();
@@ -189,14 +186,12 @@ messageForm.addEventListener('submit', (event) => {
 });
 
 document.querySelector('#copy-code').addEventListener('click', async () => {
+  const button = document.querySelector('#copy-code');
   try {
     await navigator.clipboard.writeText(activeCode);
-    const button = document.querySelector('#copy-code');
-    button.setAttribute('aria-label', 'Room code copied');
-    button.title = 'Room code copied';
+    button.textContent = 'Copied';
     setTimeout(() => {
-      button.setAttribute('aria-label', 'Copy room code');
-      button.title = 'Copy room code';
+      button.textContent = 'Copy code';
     }, 1600);
   } catch {
     addNotice(`Share this room code: ${activeCode}`);
@@ -212,7 +207,6 @@ document.querySelector('#leave-room').addEventListener('click', () => {
   peopleList.replaceChildren();
   peopleCount.textContent = '0';
   chatRoom.hidden = true;
-  chatRoom.classList.add('is-hidden');
   lobby.hidden = false;
   setEntryMode('create');
 });
